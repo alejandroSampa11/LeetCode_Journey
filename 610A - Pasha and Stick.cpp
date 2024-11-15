@@ -3,15 +3,24 @@
 using namespace std;
 
 int main(){
-	long long n;cin>>n;
-	long long resu = n/4;
-	if(n%2!=0){
-		cout<<0<<endl;
+	vector<int>alice(5);
+	vector<int>bob(4);
+	for (int i = 0; i < 5; ++i)
+	{
+		cin>>alice[i];
 	}
-	else if(n%4==0){
-		cout<<resu-1<<endl;
-	}else{
-		cout<<resu<<endl;
+	for (int i = 0; i < 4; ++i)
+	{
+		cin>>bob[i];
+	}	
+	sort(alice.begin(), alice.end());
+	sort(bob.begin(), bob.begin());
+	for (int i = 0; i < bob.size(); i)
+	{
+		if(alice[i]!=bob[i]){
+			cout<<alice[i]<<endl;
+			break;
+		}
 	}
 	return 0;
 }
