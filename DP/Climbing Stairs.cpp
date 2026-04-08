@@ -1,11 +1,18 @@
 class Solution {
 public:
-    unordered_map<int,int> memo;
+
+    int dp(int step, unordered_map<int,int>& memo){
+        if(memo.count(step)) return memo[step];
+        if(step<0) return 0;
+        if(step == 0) return 1;
+        int ways = dp(step-1, memo) + dp(step-2, memo);
+        
+        return memo[step] = ways;
+
+    }
+
     int climbStairs(int n) {
-        if(memo.count(n)) return memo[n];
-        if(n == 1) return 1;
-        if(n == 2) return 2;
-        memo[n] = climbStairs(n-1) + climbStairs(n-2);
-        return memo[n];
+        unordered_map<int,int> memo;
+        return dp(n, memo);
     }
 };
